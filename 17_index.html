@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="sound"></h1>
+    <input id="name"/>
+    <button type="button" onClick="getFetch()">Api요청</button>
+    <script>
+        function getFetch()
+        {   
+            const name = document.getElementById("name").value
+            fetch(`http://localhost:3000/sound/${name}`)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(Object.entries(data))
+                document.getElementById("sound").innerHTML = Object.entries(data)
+            });
+        }
+    </script>
+</body>
+</html>
